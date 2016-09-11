@@ -1,0 +1,15 @@
+{
+  "name": "node-chat",
+  "version": "0.1.0",
+  "description": "a simple chat app using node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Hinze",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.4.8"
+  }
+}

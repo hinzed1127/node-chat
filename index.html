@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NodeChat</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<ul id="messages"></ul>
+	<form>
+		<input id="m" type="text" placeholder="Write a message...">
+		<button>Send</button>
+	</form>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+		var socket = io.connect('http://localhost:8080');
+
+		socket.on('connect', function(){
+			username = prompt('Enter a username:');
+
+			socket.emit('join', username);
+		})
+		
+		socket.on('message', function(data) {
+			$('#messages').append($('<li>').text(data));
+		});
+
+		$('form').submit(function(){
+			socket.emit('message', $('#m').val());
+			$('#m').val('');
+		});	
+	</script>
+</body>
+</html>
